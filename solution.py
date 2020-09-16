@@ -32,8 +32,11 @@ class Truck(Carbase):
         super().__init__(car_type, photo_le_name, brand)
         self.body_whl = body_whl or None
         if self.body_whl is not None:
-            self.body_whl = body_whl.split('x')
-            self.body_width, self.body_height, self.body_lenght = float(self.body_whl[0]), float(self.body_whl[1]), float(self.body_whl[2])
+            try:
+                self.body_whl = body_whl.split('x')
+                self.body_width, self.body_height, self.body_lenght = float(self.body_whl[0]), float(self.body_whl[1]), float(self.body_whl[2])
+            except:
+                self.body_width, self.body_height, self.body_lenght = 0.0, 0.0, 0.0
         else:
             self.body_width, self.body_height, self.body_lenght = 0.0, 0.0, 0.0
         self.carrying = float(carrying)
